@@ -39,7 +39,7 @@ public class Task {
         List.add(new student("J",10,70,60));
 
 
-        Collections.sort(List,new MyComparator());
+        Collections.sort(List,(student a, student b) -> Integer.compare(a.marks, b.marks));
         System.out.println(List);
 //        System.out.println(List);
 //        Collections.sort(List,(x,y)-> Integer.compare(x.age,y.age));
