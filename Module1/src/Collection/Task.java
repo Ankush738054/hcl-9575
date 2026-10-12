@@ -20,6 +20,11 @@ public class Task {
             return this.age-o.age;
         }
     }
+    static class MyComparator implements Comparator<student>{
+        public int compare(student s1, student s2){
+            return Integer.compare(s1.marks, s2.marks);
+        }
+    }
     public static void main(String[] args) {
         ArrayList<student> List = new ArrayList<>(10);
         List.add(new student("A",1,10,20));
@@ -34,8 +39,9 @@ public class Task {
         List.add(new student("J",10,70,60));
 
 
-        Collections.sort(List);
+        Collections.sort(List,new MyComparator());
         System.out.println(List);
+//        System.out.println(List);
 //        Collections.sort(List,(x,y)-> Integer.compare(x.age,y.age));
 //        System.out.println(List);
 //        Collections.sort(List,(x,y)-> Integer.compare(x.marks,y.marks));

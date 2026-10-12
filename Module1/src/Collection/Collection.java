@@ -22,7 +22,7 @@ public class Collection {
 //
 //        System.out.println("Updated elements: " + numbers.get(2) + ", " + numbers.get(3));
 //        System.out.println(numbers.indexOf(35));
-////        numbers.clear();
+//        numbers.clear();
 //        numbers.addFirst(25);
 //        numbers.addLast(50);
 //        System.out.println("All elements"+ numbers);
