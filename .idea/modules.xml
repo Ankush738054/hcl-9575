@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HCL Training.iml" filepath="$PROJECT_DIR$/HCL Training.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HCL_Assessment_2_COREJAVA(2300320130050_Ankush)/HCL_Assessment_2_COREJAVA.iml" filepath="$PROJECT_DIR$/HCL_Assessment_2_COREJAVA(2300320130050_Ankush)/HCL_Assessment_2_COREJAVA.iml" />
       <module fileurl="file://$PROJECT_DIR$/Module1/Module1.iml" filepath="$PROJECT_DIR$/Module1/Module1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Self Learning/Self Learning.iml" filepath="$PROJECT_DIR$/Self Learning/Self Learning.iml" />
     </modules>
