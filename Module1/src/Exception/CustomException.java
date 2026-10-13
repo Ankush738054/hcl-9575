@@ -17,9 +17,7 @@ public class CustomException {
         catch (Exception e){
             System.out.println(e);
         }
-//        if (age < 18) {
-//            throw new InvalidAgeException();
-//        }
-//        System.out.println("Execute after exception");
+
+        System.out.println("Execute after exception");
     }
 }
