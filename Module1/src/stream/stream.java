@@ -1,6 +1,8 @@
 package stream;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class stream {
     public static void main(String[] args) {
@@ -23,6 +25,18 @@ public class stream {
         arr2.add("Amitabh");
         arr2.add("Abhay");
         arr2.stream().filter(n -> n.startsWith("Am")).forEach(System.out::println);
+        System.out.println();
+        arr2.stream().sorted().forEach(System.out::println);
+        System.out.println();
+        arr2.stream().map(n->"Mr "+n).forEach(System.out::println);
+        System.out.println();
 
+        HashMap<String,String> mpp = new HashMap<>();
+        mpp.put("Ankush","male");
+        mpp.put("kajsbd","female");
+        mpp.put("sjdbf","female");
+        mpp.put("sljkdj","male");
+        mpp.put("Abc","male");
+        mpp.entrySet().stream().map(entry -> entry.getValue().equals("female") ? "Mrs. " + entry.getKey(): "Mr. " + entry.getKey()).forEach(System.out::println);
     }
 }
