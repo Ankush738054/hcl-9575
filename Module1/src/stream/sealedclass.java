@@ -2,31 +2,12 @@ package stream;
 
 public class sealedclass {
     public static void main(String[] args) {
-        String day = "Saturday";
-        String temp = "";
-        switch (day){
-            case "Monday":
-                temp = "Weekday";
-                break;
-            case "Tuesday":
-                temp = "Weekday";
-                break;
-            case "Wednesday":
-                temp = "Weekday";
-                break;
-            case "Thursday":
-                temp = "Weekday";
-                break;
-            case "Friday":
-                temp = "Weekday";
-                break;
-            case "Saturday":
-                temp = "Weekend";
-                break;
-            case "Sunday":
-                temp = "Weekend";
-                break;
-        }
-        System.out.println(temp);
+        String day = "Monday";
+        String type = switch (day){
+            case "Monday","Tuesday","Wednesday","Thursday","Friday" -> "Weekday";
+            case "Saturday","Sunday" -> "Weekend";
+            default -> "Invalid Day";
+        };
+        System.out.println(type);
     }
 }
