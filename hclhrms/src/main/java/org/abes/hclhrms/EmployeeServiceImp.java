@@ -19,5 +19,11 @@ public class EmployeeServiceImp {
     public List<Employee> getEmp(){
         return emprepo.getEmp();
     }
+    public Employee getEmpId(){
+        return emprepo.getEmpById(200);
+    }
+    public String addEmpBulk(){
+        return emprepo.addEmpbulk();
+    }
 
 }
