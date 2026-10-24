@@ -11,9 +11,9 @@ import java.util.List;
 public class EmployeeServiceImp {
     @Autowired
     private EmployeeRepo emprepo;
-
+    Employee emp1;
     public String addEmp(){
-        Employee emp1 = new Employee(200l, "Abhay", "FSD", "Java","abhay123@gmail.com");
+        emp1 = new Employee(200l, "Abhay", "FSD", "Java","abhay123@gmail.com");
         return emprepo.addemp(emp1);
     }
     public List<Employee> getEmp(){
@@ -24,6 +24,12 @@ public class EmployeeServiceImp {
     }
     public String addEmpBulk(){
         return emprepo.addEmpbulk();
+    }
+    public String deletebyid(){
+        return emprepo.deleteById(101);
+    }
+    public String updatebyid(){
+        return emprepo.updateById(200l, emp1);
     }
 
 }
