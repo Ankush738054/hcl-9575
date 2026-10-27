@@ -10,9 +10,9 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    public String createNewEmployee(){
-        Employee emp1 = new Employee(200l,"Ram","java","Developer");
-        employeeRepository.save(emp1);
+    public String createNewEmployee(Employee newEmp){
+//        Employee emp1 = new Employee(200l,"Ram","java","Developer","ram@example.com","password123");
+        employeeRepository.save(newEmp);
         return "Employee is Added Successfully";
     }
     public Employee getEmployeeById(long emid){
@@ -28,7 +28,7 @@ public class EmployeeService {
     public String updateEmployeeById(long emid){
         Employee emp = employeeRepository.findById(emid).orElse(null);
         if (emp != null){
-            Employee emp2 = new Employee(201,"Shyam","java","Developer");
+            Employee emp2 = new Employee(201,"Shyam","java","Developer","shyam@example.com","password123");
             employeeRepository.save(emp2);
         }
         return "Updated";

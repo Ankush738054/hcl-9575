@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("http://localhost:5173/")
+@RequestMapping("/v1/user")
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
@@ -15,9 +16,10 @@ public class EmployeeController {
     public String msg(){
         return "Heloooooooooooooooo Brooooooooooooooooo";
     }
-    @GetMapping("/addemp")
-    public String addNewEmp(){
-        return employeeService.createNewEmployee();
+    @PostMapping("/addemp")
+    public String addNewEmp(@RequestBody Employee emp){
+        System.out.println(emp.getEmail());
+        return employeeService.createNewEmployee(emp);
     }
     @GetMapping("/findbyid/{empid}")
     public Employee getEmpById(@PathVariable long empid){
