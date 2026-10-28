@@ -33,4 +33,11 @@ public class EmployeeService {
         }
         return "Updated";
     }
+    public String verification(long empId, String password) {
+        Employee employee = employeeRepository.findById(empId).orElse(null);
+        if (employee != null && password.equals(employee.getPassword())) {
+            return "Login successful";
+        }
+        return "Invalid employee ID or password";
+    }
 }

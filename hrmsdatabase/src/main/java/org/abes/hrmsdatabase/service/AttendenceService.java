@@ -6,6 +6,8 @@ import org.abes.hrmsdatabase.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AttendenceService {
     @Autowired
@@ -30,5 +32,9 @@ public class AttendenceService {
 
         attendenceRepository.save(attendance);
         return "Attendance marked successfully";
+    }
+
+    public List<Attendance> getAttendanceByEmployeeId(Long empId) {
+        return attendenceRepository.findByEmployeeId(empId);
     }
 }

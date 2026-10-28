@@ -21,6 +21,13 @@ public class EmployeeController {
         System.out.println(emp.getEmail());
         return employeeService.createNewEmployee(emp);
     }
+    @PostMapping("/login")
+    public String login(@RequestBody Employee employee) {
+        return employeeService.verification(
+                employee.getEmp_id(),
+                employee.getPassword()
+        );
+    }
     @GetMapping("/findbyid/{empid}")
     public Employee getEmpById(@PathVariable long empid){
         System.out.println(empid);

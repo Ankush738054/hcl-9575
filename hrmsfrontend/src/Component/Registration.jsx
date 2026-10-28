@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function Registration() {
-  const [empId, setEmpId] = useState();
-  const [empName, setEmpName] = useState();
-  const [empDesignation, setDesignation] = useState();
-  const [empStack, setStack] = useState();
-  const [empEmail, setEmail] = useState();
-  const [empPassword, setPassword] = useState();
+  const [empId, setEmpId] = useState("");
+  const [empName, setEmpName] = useState("");
+  const [empDesignation, setDesignation] = useState("");
+  const [empStack, setStack] = useState("");
+  const [empEmail, setEmail] = useState("");
+  const [empPassword, setPassword] = useState("");
 
   async function sendData(e) {
+    e.preventDefault();
     try {
-      e.preventDefault();
       const server = await fetch("http://localhost:8080/v1/user/addemp", {
-        method: "Post",
+        method: "POST",
         body: JSON.stringify({
           emp_id: Number(empId),
           emp_name: empName,
@@ -24,96 +24,104 @@ function Registration() {
         headers: { "Content-Type": "application/json" },
       });
       const status = await server.text();
+      if (!server.ok) {
+        alert(status || "Registration failed");
+        return;
+      }
       alert(status);
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.error("Registration request failed:", error);
+      alert("Unable to connect to the registration service. Please try again.");
     }
   }
 
   return (
-    <div>
-      <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Name</label>
+    <div className="container-fluid min-vh-100 bg-body-tertiary d-flex align-items-center justify-content-center py-5">
+      <div className="card border-0 shadow-sm rounded-4 w-100" style={{ maxWidth: "680px" }}>
+        <div className="card-body p-4 p-md-5">
+          <h1 className="h3 text-center mb-2">Create Your Account</h1>
+          <p className="text-secondary text-center mb-4">Enter your employee details to register</p>
+          <form onSubmit={sendData}>
+        <div className="mb-3">
+          <label htmlFor="empName" className="form-label">Name</label>
           <input
             onChange={(e) => setEmpName(e.target.value)}
             required
             type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            className="form-control"
+            id="empName"
             placeholder="Enter Name"
           />
         </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">EmpID</label>
+        <div className="mb-3">
+          <label htmlFor="empId" className="form-label">EmpID</label>
           <input
             onChange={(e) => setEmpId(e.target.value)}
             required
-            type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            type="number"
+            min="1"
+            step="1"
+            className="form-control"
+            id="empId"
             placeholder="Enter Emp-ID"
           />
         </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Designation</label>
+        <div className="mb-3">
+          <label htmlFor="empDesignation" className="form-label">Designation</label>
           <input
             onChange={(e) => setDesignation(e.target.value)}
             required
             type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            className="form-control"
+            id="empDesignation"
             placeholder="Enter Designation"
           />
         </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Stack</label>
+        <div className="mb-3">
+          <label htmlFor="empStack" className="form-label">Stack</label>
           <input
             onChange={(e) => setStack(e.target.value)}
             required
             type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            className="form-control"
+            id="empStack"
             placeholder="Enter Stack"
           />
         </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email</label>
+        <div className="mb-3">
+          <label htmlFor="empEmail" className="form-label">Email</label>
           <input
             onChange={(e) => setEmail(e.target.value)}
             required
             type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            className="form-control"
+            id="empEmail"
             placeholder="Enter Email"
           />
         </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
+        <div className="mb-3">
+          <label htmlFor="empPassword" className="form-label">Password</label>
           <input
             onChange={(e) => setPassword(e.target.value)}
             required
             type="password"
-            class="form-control"
-            id="exampleInputPassword1"
+            className="form-control"
+            id="empPassword"
             placeholder="Password"
           />
         </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1">
+        <div className="form-check mb-4">
+          <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+          <label className="form-check-label" htmlFor="exampleCheck1">
             Check me out
           </label>
         </div>
-        <button type="submit" onClick={sendData} class="btn btn-primary">
+        <button type="submit" className="btn btn-primary w-100 py-2">
           Register
         </button>
       </form>
+        </div>
+      </div>
     </div>
   );
 }
