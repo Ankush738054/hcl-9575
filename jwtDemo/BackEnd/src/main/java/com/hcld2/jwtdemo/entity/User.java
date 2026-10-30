@@ -1,10 +1,12 @@
 package com.hcld2.jwtdemo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.jspecify.annotations.Nullable;
 
 @Entity
 @Table(name = "users")
@@ -19,4 +21,9 @@ public class User {
     private String username;
     @Column(nullable = false)
     private String password;
+
+    public User(@NotBlank String username, @Nullable String password) {
+        this.username = username;
+        this.password = password;
+    }
 }
