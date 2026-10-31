@@ -5,13 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +21,11 @@ public class Post {
     private String content;
     @Column(nullable = false)
     private String author;
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime createdAt=LocalDateTime.now();
+
+    public Post(String title, String content, String author) {
+        this.title = title;
+        this.author=author;
+        this.content = content;
+    }
 }

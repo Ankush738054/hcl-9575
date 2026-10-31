@@ -14,24 +14,26 @@ public class JwtService {
     private final JWTVerifier verifier;
     private final long expireMs;
 
-    public JwtService(@Value("${app.jwt.secret}") String secret, @Value("${app.jwt.expiration-ms}") long expireMs) {
+    public JwtService(@Value("${app.jwt.secret}") String secret,
+                      @Value("${app.jwt.expiration-ms}") long expireMs) {
         this.algorithm = Algorithm.HMAC256(secret);
         this.verifier = JWT.require(algorithm).build();
         this.expireMs = expireMs;
     }
 
-    public String generateToken(String username){
+    public String generateToken(String username) {
         Date now = new Date();
         return JWT.create()
                 .withSubject(username)
                 .withIssuedAt(now)
-                .withExpiresAt(new Date(now.getTime() + expireMs))
+                .withExpiresAt(new Date(now.getTime()+expireMs))
                 .sign(algorithm);
     }
-    public String verifyAndGetUsername(String token){
+    public String verifyAndGetUsername(String token) {
         try {
             return verifier.verify(token).getSubject();
-        }catch (Exception e){
+
+        }catch (Exception e) {
             return null;
         }
     }
